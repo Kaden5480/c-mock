@@ -1,10 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0 only
 /**
- * @file    mock.c
- * @author  Kaden5480
- * @version 1.0
- * @date    2021-04-18 (yyyy-mm-dd)
- *
  * Copyright (C) 2021 Kaden5480
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -15,18 +10,25 @@
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
  * more details.
+ *
+ * @file    mock.c
+ * @author  Kaden5480
+ * @version 1.1
+ * @date    2021-04-19 (yyyy-mm-dd)
  */
 
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
-void print_help(char *invalid) {
-    if (invalid) {
+void print_help(char *invalid)
+{
+    if (invalid)
+    {
         printf("mock: Unknown option: %s\n\n", invalid);
     }
 
-    printf("C Mock v1.0\n\n");
+    printf("C Mock v1.1\n\n");
     printf("Usage:\n");
     printf("  mock <string>...      Print the given strings in mock format\n\n");
     printf("Options:\n");
@@ -34,19 +36,23 @@ void print_help(char *invalid) {
 }
 
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     // argc must be at least 2
-    if (argc < 2) {
+    if (argc < 2)
+    {
         print_help(0);
         return 1;
     }
     // print help menu if specified by user
-    else if (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help")) {
+    else if (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help"))
+    {
         print_help(0);
         return 0;
     }
     // print help menu and invalid arg
-    else if (argv[1][0] == '-') {
+    else if (argv[1][0] == '-')
+    {
         print_help(argv[1]);
         return 1;
     }
@@ -56,7 +62,8 @@ int main(int argc, char **argv) {
     int counter;
 
     // loop through all args
-    for (int i = 1; i < argc; i++) {
+    for (int i = 1; i < argc; i++)
+    {
         // if last arg, add newline at end, else spaces
         fmt = (i == argc-1) ? "%s\n" : "%s ";
 
@@ -66,23 +73,28 @@ int main(int argc, char **argv) {
         // set counter to 0
         counter = 0;
 
-        do {
+        do
+        {
             // exclude any non-letter char
-            if (!isalpha(*c)) {
+            if (!isalpha(*c))
+            {
                 continue;
             }
 
             // convert char either to upper/lower
-            if (counter%2 == 0) {
+            if (counter%2 == 0)
+            {
                 *c = tolower((unsigned char) *c);
-            }
-            else {
+            } 
+            else
+            {
                 *c = toupper((unsigned char) *c);
             }
 
             // increment counter
             counter++;
-        } while (*c && c++);
+        }
+        while (*c && c++);
 
         // print the arg after modification
         printf(fmt, argv[i]);

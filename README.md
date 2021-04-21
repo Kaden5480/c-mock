@@ -29,7 +29,7 @@ If you wish to create a fresh build entirely, you can run this command.<br>
 
 ## Usage
 After building the executable, you should be able to run it using the following command.<br>
-`./mock`<br>
+`./mock`
 
 ### Help
 For a help menu, you can simply type<br>

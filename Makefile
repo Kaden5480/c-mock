@@ -1,6 +1,5 @@
 build: mock.c
 	@gcc mock.c -o mock -Xlinker --strip-all
-
 	@printf "Successfully built mock\n"
 
 clean:
